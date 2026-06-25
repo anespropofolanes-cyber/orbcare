@@ -32,7 +32,11 @@
     background:var(--bg);color:var(--text);
     line-height:1.75;font-weight:400;font-size:16px;letter-spacing:.01em;
     -webkit-font-smoothing:antialiased;
+    -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+    -webkit-touch-callout:none;
   }
+  input,textarea{-webkit-user-select:text;user-select:text;}
+  img{-webkit-user-drag:none;user-drag:none;pointer-events:none;}
   .num,.date,code{font-family:"DM Mono",monospace;font-feature-settings:"tnum";}
 
   /* ---- Top bar ---- */
@@ -46,8 +50,8 @@
   .topbar .meta{margin-top:7px;font-size:12.5px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
 
   /* ---- Cover / hero ---- */
-  .cover{position:relative;width:100%;height:clamp(118px,19vw,200px);overflow:hidden;
-    background-color:#f4f1f1;
+  .cover{position:relative;width:100%;height:clamp(150px,26vw,280px);overflow:hidden;display:flex;justify-content:flex-end;align-items:center;
+    background-color:#f2ede2;
     background-image:
       radial-gradient(1.6px 1.6px at 9% 28%, rgba(201,162,107,.6), transparent 60%),
       radial-gradient(1.2px 1.2px at 19% 58%, rgba(201,162,107,.5), transparent 60%),
@@ -57,9 +61,9 @@
       radial-gradient(2px 2px at 15% 44%, rgba(176,127,134,.3), transparent 60%),
       radial-gradient(1.1px 1.1px at 33% 50%, rgba(201,162,107,.35), transparent 60%),
       radial-gradient(1px 1px at 12% 86%, rgba(201,162,107,.3), transparent 60%);}
-  .cover-img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;
-    -webkit-mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,0) 10%, #000 46%);
-    mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,0) 10%, #000 46%);}
+  .cover-img{height:100%;width:auto;max-width:100%;display:block;
+    -webkit-mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,0) 5%, #000 40%);
+    mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,0) 5%, #000 40%);}
   .cover::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(90deg, rgba(247,243,238,.5) 0%, rgba(247,243,238,.18) 24%, rgba(247,243,238,0) 44%);}
   .cover-overlay{position:absolute;inset:0;display:flex;align-items:center;z-index:2;line-height:normal;}
@@ -99,11 +103,18 @@
   main{padding:8px 16px 56px;max-width:720px;margin:0 auto;}
 
   /* ---- Announcements ---- */
-  .pin-block{background:var(--pin-soft);border:1.5px solid var(--pin-line);border-radius:var(--radius);padding:16px 16px 8px;margin:6px 0 22px;}
-  .pin-head{display:flex;align-items:center;gap:8px;color:var(--pin);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;}
-  .pin-head svg{width:16px;height:16px;}
+  .pin-block{background:var(--pin-soft);border:1.5px solid var(--pin-line);border-radius:var(--radius);padding:14px 16px;margin:6px 0 22px;}
+  .pin-head{display:flex;align-items:center;gap:8px;width:100%;border:none;background:transparent;cursor:pointer;font-family:inherit;color:var(--pin);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:0;}
+  .pin-head>svg{width:16px;height:16px;flex:none;}
+  .pin-title{flex:1;text-align:left;}
+  .pin-count{font-size:12px;letter-spacing:0;background:#fff;border:1px solid var(--pin-line);border-radius:999px;padding:1px 9px;color:var(--pin);}
+  .pin-chev{display:flex;color:var(--pin);transition:transform .25s;}
+  .pin-chev svg{width:16px;height:16px;}
+  .pin-block.open .pin-chev{transform:rotate(180deg);}
+  .pin-body{display:none;margin-top:14px;}
+  .pin-block.open .pin-body{display:block;}
   .pin-item{display:flex;gap:13px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--pin-line);}
-  .pin-item:last-child{border-bottom:none;}
+  .pin-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
   .pin-date{flex:none;font-size:12.5px;color:var(--pin);background:#fff;border:1px solid var(--pin-line);border-radius:7px;padding:3px 8px;height:fit-content;letter-spacing:.02em;}
   .pin-text{font-size:15px;color:var(--text);line-height:1.7;}
   .pin-text .who{font-weight:500;color:var(--pin);}
@@ -194,13 +205,17 @@
 
   <main>
     <section class="pin-block" id="pinBlock">
-      <div class="pin-head">
+      <button class="pin-head" id="pinToggle" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-        施姐最新指示
+        <span class="pin-title">施姐最新指示</span>
+        <span class="pin-count num">3</span>
+        <span class="pin-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+      </button>
+      <div class="pin-body">
+        <div class="pin-item"><span class="pin-date">115/01/23</span><span class="pin-text"><span class="who">施姐：</span>兩歲以下才用 <b>D0.33S</b>，兩歲以上用 <b>L/R</b>。</span></div>
+        <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施姐下令：</span>天氣冷，點滴務必使用溫箱中的溫熱點滴。</span></div>
+        <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施姐下令：</span>凡是有出現併發症的案例，當週要討論與檢討，以維持病人安全與品質。</span></div>
       </div>
-      <div class="pin-item"><span class="pin-date">115/01/23</span><span class="pin-text"><span class="who">施姐：</span>兩歲以下才用 <b>D0.33S</b>，兩歲以上用 <b>L/R</b>。</span></div>
-      <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施姐下令：</span>天氣冷，點滴務必使用溫箱中的溫熱點滴。</span></div>
-      <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施姐下令：</span>凡是有出現併發症的案例，當週要討論與檢討，以維持病人安全與品質。</span></div>
     </section>
 
     <div class="grid-label" id="gridLabel">注意事項分類</div>
@@ -488,6 +503,21 @@ function doSearch(q){
 }
 search.addEventListener('input',e=>doSearch(e.target.value));
 clearBtn.addEventListener('click',()=>{search.value='';doSearch('');search.focus();});
+
+/* ---- Collapsible announcements ---- */
+const pinToggle=document.getElementById('pinToggle');
+pinToggle.addEventListener('click',()=>{
+  const open=pinBlock.classList.toggle('open');
+  pinToggle.setAttribute('aria-expanded',open);
+});
+
+/* ---- Copy deterrent (basic) ---- */
+['contextmenu','copy','cut','selectstart','dragstart'].forEach(ev=>{
+  document.addEventListener(ev,e=>{ if(!e.target.closest('input')) e.preventDefault(); });
+});
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&['c','x','a'].includes(e.key.toLowerCase())&&!e.target.closest('input')) e.preventDefault();
+});
 </script>
 </body>
 </html>
