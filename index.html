@@ -207,14 +207,14 @@
     <section class="pin-block" id="pinBlock">
       <button class="pin-head" id="pinToggle" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-        <span class="pin-title">施姐最新指示</span>
+        <span class="pin-title">施主任最新指示</span>
         <span class="pin-count num">3</span>
         <span class="pin-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </button>
       <div class="pin-body">
-        <div class="pin-item"><span class="pin-date">115/01/23</span><span class="pin-text"><span class="who">施姐：</span>兩歲以下才用 <b>D0.33S</b>，兩歲以上用 <b>L/R</b>。</span></div>
-        <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施姐下令：</span>天氣冷，點滴務必使用溫箱中的溫熱點滴。</span></div>
-        <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施姐下令：</span>凡是有出現併發症的案例，當週要討論與檢討，以維持病人安全與品質。</span></div>
+        <div class="pin-item"><span class="pin-date">115/01/23</span><span class="pin-text"><span class="who">施主任：</span>兩歲以下才用 <b>D0.33S</b>，兩歲以上用 <b>L/R</b>。</span></div>
+        <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施主任下令：</span>天氣冷，點滴務必使用溫箱中的溫熱點滴。</span></div>
+        <div class="pin-item"><span class="pin-date">115/01/02</span><span class="pin-text"><span class="who">施主任下令：</span>凡是有出現併發症的案例，當週要討論與檢討，以維持病人安全與品質。</span></div>
       </div>
     </section>
 
@@ -337,7 +337,8 @@ const DATA=[
       'CVP 車及 SA 車上的消毒液開瓶，請寫上開啟及有效日期。',
       '新換一梯次後，請於 2 週內抽空將房間衛材效期檢查完畢；近效期 3 個月內的先行使用或帶回工作室。',
       '每週一固定更新 Sodalime，週間視情況更換。張思玲醫師叮嚀：切勿讓吸入 ETCO2 超過 3，或水氣太濕淹進機器。',
-      '12-8 或 3-11 最後離開者，務必把冰箱門關好貼緊密實（防半夜冰箱溫度過高），並將冰箱及藥車上鎖；巡視各房間，確認麻機、溫毯、溫水槽及各種儀器都關機（38 室及 43 室除外），排放整齊。'
+      '12-8 或 3-11 最後離開者，務必把冰箱門關好貼緊密實（防半夜冰箱溫度過高），並將冰箱及藥車上鎖；巡視各房間，確認麻機、溫毯、溫水槽及各種儀器都關機（38 室及 43 室除外），排放整齊。',
+      '下刀後請以高流量空氣沖洗麻機。'
     ]}
   ]},
   {id:'lai',icon:'user',title:'賴主任的習慣',groups:[
@@ -354,18 +355,19 @@ const DATA=[
       'Radical：不管有無會其他科，一律用 Edward。'
     ]},
     {sub:'其他',items:[
-      '<b>IVPCA order</b>：Formula <code>2 / Fentanyl</code>；Loading <code>2ml</code>；Continue <code>0ml</code>；Lockout time <code>8min</code>；4hr limit <code>30ml</code>。',
+      '<b>IVPCA order</b>：Formula <code>2 / Fentanyl</code>；Loading <code>2ml</code>；Continue <code>0ml</code>；Bolus <code>2ml</code>；Lockout time <code>8min</code>；4hr limit <code>30ml</code>。',
       '消毒方式：先用藍色消毒液消第一遍，再用紅色消一遍；目前藍色消毒液缺貨中，暫改 BI。',
       '婦產科腹腔鏡，上完麻藥後常規用 Suction 抽胃。',
       'Painless：額外上 ① 5ml 空針 ② 30G 針頭 ③ 藍色 epidural set ④ N/S 20ml。'
     ]}
   ]},
-  {id:'shih',icon:'user',title:'施姐習慣',groups:[
+  {id:'shih',icon:'user',title:'施主任習慣',groups:[
     {items:[
       '目前不使用 Precedex。',
       'C/S 請備 Dormicum。',
-      '請詳記施姐全麻催醒拔管的流程。',
-      'A-Line 使用 <code>22# 針</code>，除非術後轉 ICU；要改打其他針請詢問。'
+      '請詳記施主任全麻催醒拔管的流程。',
+      'A-Line 使用 <code>22# 針</code>，除非術後轉 ICU；要改打其他針請詢問。',
+      '兩歲以上使用 <code>L/R</code>。'
     ]}
   ]},
   {id:'ming',icon:'user',title:'銘哥習慣',groups:[
@@ -375,10 +377,11 @@ const DATA=[
       'Magill 前端夾子要貼起來。'
     ]}
   ]},
-  {id:'ling',icon:'user',title:'思玲習慣',groups:[
+  {id:'ling',icon:'user',title:'思玲醫師習慣',groups:[
     {items:[
       'Painless labor：額外上 5ml 空針 & 30G 針頭。',
-      '若需執行 ERAS，執行 ORB ERAS 流程表（不限水）。'
+      '若需執行 ERAS，執行 ORB ERAS 流程表（不限水）。',
+      '兩歲以上使用 <code>L/R</code>。'
     ]}
   ]},
   {id:'rules',icon:'book',title:'ORB 守則',groups:[
